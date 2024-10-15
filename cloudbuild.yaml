@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['clean', 'install']
+    env:
+      - 'JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'shop-service'
+      - '--source'
+      - '.'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'europe-north1'
+      - '--allow-unauthenticated'
