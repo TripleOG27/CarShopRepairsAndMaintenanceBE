@@ -1,6 +1,7 @@
 steps:
-  - name: 'gcr.io/cloud-builders/mvn'
+  - name: 'gcr.io/cloud-builders/mvn:latest'
     args: ['clean', 'install']
+    entrypoint: ma
     env:
       - 'JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64'
 
